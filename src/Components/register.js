@@ -44,7 +44,7 @@ const Register=()=>{
         if(name==="password" && !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%*?&]{10,}$/.test(value)) errorMsg="Enter valid password"
         if(name==="cpswd")
             if(!value) errorMsg="Password is required"
-        else if(value !== user.pswd) errorMsg="Must match with password"
+        else if(value !== user.pswd) errorMsg="Must match with the password"
         if(name==="about")
             if(!value) errorMsg="Tell yourself"
         else if(value.length>200) errorMsg="Write less than 200 characters"
