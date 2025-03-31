@@ -26,13 +26,13 @@ const Register = (props) => {
       errorMsg = "Username must have at least 5 characters.";
     } else if (name === "dob") {
       const age = moment().diff(moment(value), 'years');
-      if (age < 0 || age > 1200) errorMsg = "Invalid age range.";
+      if (age < 0 || age > 120) errorMsg = "Invalid age range.";
     } else if (name === "password" && !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)) {
       errorMsg = "Password must be 8+ chars with letters, numbers, and special characters.";
     } else if (name === "cpswd" && value !== user.password) {
       errorMsg = "Passwords do not match.";
-    } else if (name === "about" && value.length > 5000) {
-      errorMsg = "Must be less than 5000 characters.";
+    } else if (name === "about" && value.length > 1000) {
+      errorMsg = "Must be less than 1000 characters.";
     }
     setErrors((prev) => ({ ...prev, [name]: errorMsg }));
   };
@@ -41,31 +41,32 @@ const Register = (props) => {
     const { name, value } = e.target;
     
     if (name === "dob") {
-      const age = moment().diff(moment(value), 'years');
-      setUser({ ...user, age, [name]: value });
-      validateField(name, value);
-      validateField("age", age);
+      const age = moment().diff(moment(value), 'years')
+      setUser({ ...user, age, [name]: value })
+      validateField(name, value)
+      validateField("age", age)
     } else {
-      setUser({ ...user, [name]: value });
-      validateField(name, value);
+      setUser({ ...user, [name]: value })
+      validateField(name, value)
     }
   };
 
   const handleRegister = async (e) => {
-    e.preventDefault();
-    let formValid = true;
+    e.preventDefault()
+    let formValid = true
+    let validationErrors={}
 
     Object.keys(user).forEach((key) => {
-      validateField(key, user[key]);
+      validateField(key, user[key])
       if (errors[key]) formValid = false;
     });
 
     if (user.password !== user.cpswd) {
       setErrors((prev) => ({ ...prev, cpswd: "Passwords do not match" }));
-      formValid = false;
+      formValid = false
     }
-
-    if (!formValid) return;
+    setErrors(validationErrors)
+    if (!formValid) return
 
     console.log("Form submitted:", user);
   };
