@@ -1,7 +1,7 @@
 
 import './App.css';
 import Register from './Components/register';
-import viewUsers from './Components/Users'
+import Users from './Components/Users'
 import React ,{ useState } from 'react';
 
 
@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       {(showUsers)? null: <Register showUsers={showUsers}/>}
-      <viewUsers setshowUsers={setshowUsers}/>
+      <Users setshowUsers={setshowUsers}/>
     </div>
   )
 }
