@@ -61,11 +61,7 @@ const Register = (props) => {
       if (!user[key]) {
         validationErrors[key] = "This field is required.";
       }
-    });
-  
-    if (user.password !== user.cpswd) {
-      validationErrors.cpswd = "Passwords do not match";
-    }
+    })
   
     setErrors(validationErrors);
   
