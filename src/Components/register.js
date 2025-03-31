@@ -22,7 +22,7 @@ const Register = (props) => {
 
   const validateField = (name, value) => {
     let errorMsg = "";
-    if (name === "name" && value.trim().length < 5) {
+    if (name === "name" && value.length < 5) {
       errorMsg = "Username must have at least 5 characters.";
     } else if (name === "dob") {
       const age = moment().diff(moment(value), 'years');
@@ -52,25 +52,32 @@ const Register = (props) => {
   };
 
   const handleRegister = async (e) => {
-    e.preventDefault()
-    let formValid = true
-    let validationErrors={}
-
+    e.preventDefault();
+    
+    let validationErrors = {};
+  
     Object.keys(user).forEach((key) => {
-      validateField(key, user[key])
-      if (errors[key]) formValid = false;
+      validateField(key, user[key]);
+      if (!user[key]) {
+        validationErrors[key] = "This field is required.";
+      }
     });
-
+  
     if (user.password !== user.cpswd) {
-      setErrors((prev) => ({ ...prev, cpswd: "Passwords do not match" }));
-      formValid = false
+      validationErrors.cpswd = "Passwords do not match";
     }
-    setErrors(validationErrors)
-    if (!formValid) return
-
+  
+    setErrors(validationErrors);
+  
+    // If there are validation errors, show an alert and stop submission
+    if (Object.keys(validationErrors).length > 0) {
+      alert("Please enter all fields with correct credentials.");
+      return;
+    }
+  
     console.log("Form submitted:", user);
   };
-
+  
   return (
     <div className="container">
         <center>
