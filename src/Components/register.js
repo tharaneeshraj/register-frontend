@@ -27,10 +27,10 @@ const Register = (props) => {
     } else if (name === "dob") {
       const age = moment().diff(moment(value), 'years');
       if (age < 0 || age > 120) errorMsg = "Invalid age range.";
-    } else if (name === "password" && !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)) {
-      errorMsg = "Password must be 8+ chars with letters, numbers, and special characters.";
+    } else if (name === "password" && !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/) {
+      errorMsg = "Enter the Valid Password";
     } else if (name === "cpswd" && value !== user.password) {
-      errorMsg = "Passwords do not match.";
+      errorMsg = "Re-enter Password";
     } else if (name === "about" && value.length > 1000) {
       errorMsg = "Must be less than 1000 characters.";
     }
@@ -69,23 +69,17 @@ const Register = (props) => {
   
     setErrors(validationErrors);
   
-    
-    if (Object.keys(validationErrors).length > 0) {
-      alert("Please enter all fields with correct credentials.");
-      return;
-    }
-  
     console.log("Form submitted:", user);
   };
   
   return (
     <div className="container">
         <center>
-      <h1>User Registration</h1>
+      <h1>Registration Form</h1>
       <form onSubmit={handleRegister}>
         <div className="input-container">
           <input type="text" name="name" placeholder="User Name" value={user.name} onChange={handleChange} required disabled={!isNewUser ? "disabled" : ""} />
-          <span className="info-icon" title="Username can't be changed after registration. It must contain at least 5 characters">ℹ</span>
+          <span className="info-icon" title="It must contain at least 5 characters">ℹ</span>
         </div>
         {errors.name && <span className="error">{errors.name}</span>}
 
