@@ -69,7 +69,7 @@ const Register = (props) => {
   
     setErrors(validationErrors);
   
-    // If there are validation errors, show an alert and stop submission
+    
     if (Object.keys(validationErrors).length > 0) {
       alert("Please enter all fields with correct credentials.");
       return;
