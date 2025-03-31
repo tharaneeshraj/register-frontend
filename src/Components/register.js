@@ -66,24 +66,20 @@ const Register = (props) => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    
-    let validationErrors = {};
-  
+    let formValid = true;
+
     Object.keys(user).forEach((key) => {
       validateField(key, user[key]);
-      if (!user[key]) {
-        validationErrors[key] = "This field is required.";
-      }
+      if (errors[key]) formValid = false;
     });
-  
+
     if (user.password !== user.cpswd) {
-      validationErrors.cpswd = "Passwords do not match";
+      setErrors((prev) => ({ ...prev, cpswd: "Passwords do not match" }));
+      formValid = false;
     }
-  
-    setErrors(validationErrors);
-  
-    console.log("Form submitted:", user);
-  };
+
+    if (!formValid) return;
+    }
   
   return (
     <div className="container">
