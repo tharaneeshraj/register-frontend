@@ -1,4 +1,4 @@
-import { use, useState } from "react"
+import {  useState } from "react"
 
 const Register=()=>{
 
@@ -63,22 +63,22 @@ const Register=()=>{
                 <h1>User Registration</h1>
             <form>
                 <div className="inside-container">
-                    <input type="text" name="name" placeholder="Username" value={user.name} onChange={handleChange} onBlur={handleBlur}></input>
+                    <input type="text" name="name" placeholder="Username" value={user.name} onChange={handleChange} onBlur={handleBlur} required></input>
                 </div>
                 <div className="inside-container">
-                    <input type="date" name="dob" value={user.dob} onChange={handleChange} onBlur={handleBlur}></input>
+                    <input type="date" name="dob" value={user.dob} onChange={handleChange} onBlur={handleBlur} required></input>
                 </div>
                 <div className="inside-container">
-                    <input type="number" name="age" value={user.age} placeholder="Enter Age" onChange={handleChange} onBlur={handleBlur}></input>
+                    <input type="number" name="age" value={user.age} placeholder="Enter Age" onChange={handleChange} onBlur={handleBlur} required></input>
                 </div>
                 <div className="inside-container">
-                    <input type="password" name="pswd" value={user.pswd} placeholder="Enter Password" onChange={handleChange} onBlur={handleBlur}></input>
+                    <input type="password" name="pswd" value={user.pswd} placeholder="Enter Password" onChange={handleChange} onBlur={handleBlur} required></input>
                 </div>
                 <div className="inside-container">
-                    <input type="password" name="cpswd" value={user.cpswd} placeholder="Re-enter Password" onChange={handleChange} onBlur={handleBlur}></input>
+                    <input type="password" name="cpswd" value={user.cpswd} placeholder="Re-enter Password" onChange={handleChange} onBlur={handleBlur} required></input>
                 </div>
                 <div className="inside-container">
-                    <textarea name="about" placeholder="Tell me yourself about less than 200 characters" value={user.about} onChange={handleChange} onBlur={handleBlur}></textarea>
+                    <textarea name="about" placeholder="Tell me yourself about less than 200 characters" value={user.about} onChange={handleChange} onBlur={handleBlur} required></textarea>
                 </div>
                 <button type="submit">Submit</button>
             </form>
