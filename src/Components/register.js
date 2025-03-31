@@ -29,7 +29,7 @@ const Register = (props) => {
       errorMsg = "Username must have at least 5 characters.";
     } else if (name === "dob") {
       const age = moment().diff(moment(value), 'years');
-      if (age < 0 || age > 120) errorMsg = "Invalid age range.";
+      if (age < 0 || age > 100) errorMsg = "Invalid age range.";
     } else if (name === "password" && !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)) {
       errorMsg = "Enter a valid password.";
     } else if (name === "cpswd" && value !== user.password) {
@@ -70,15 +70,15 @@ const Register = (props) => {
 
     Object.keys(user).forEach((key) => {
       validateField(key, user[key]);
-      if (errors[key]) formValid = false;
-    });
+      if (errors[key]) formValid = false
+    })
 
     if (user.password !== user.cpswd) {
-      setErrors((prev) => ({ ...prev, cpswd: "Passwords do not match" }));
-      formValid = false;
+      setErrors((prev) => ({ ...prev, cpswd: "Passwords do not match" }))
+      formValid = false
     }
 
-    if (!formValid) return;
+    if (!formValid) return
     }
   
   return (
@@ -101,7 +101,7 @@ const Register = (props) => {
 
         <div className="input-container">
           <input type="number" name="age" placeholder="Age" value={user.age} onBlur={handleBlur} disabled required />
-          <span className="info-icon" title="Accepted age range 0-120">ℹ</span>
+          <span className="info-icon" title="Accepted age range 0-100">ℹ</span>
         </div>
         {errors.age && <span className="error">{errors.age}</span>}
 
@@ -127,7 +127,7 @@ const Register = (props) => {
       </form>
       </center>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
