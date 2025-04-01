@@ -1,18 +1,17 @@
 
 import './App.css';
+import React, { useState } from "react";
 import Register from './Components/register'
 import ViewUsers from './Components/Users'
-import React ,{ useState } from 'react';
 
 function App() {
-
-  const [showUsers,setshowUsers] =useState(false)
+  const [showUsers, setShowUsers] = useState(false);
   return (
     <div>
-      {(showUsers)? null: <Register showUsers={showUsers}/>}
-      <ViewUsers setshowUsers={setshowUsers}/>
+      {(showUsers)? null : <Register setShowUsers={setShowUsers}/>}
+      <ViewUsers setShowUsers={setShowUsers}/>
     </div>
-  )
+  );
 }
 
 export default App;
