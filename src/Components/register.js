@@ -128,7 +128,7 @@ const Register = (props) => {
         setErrors({});
       } catch (err) {
         console.log(err);
-        alert("Updation failed! Please contact administrator for more details");
+        
       }
     }
   };
