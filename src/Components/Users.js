@@ -14,7 +14,6 @@ const ViewUsers = ({ setShowUsers }) => {
   
 
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
-  console.log(API_URL);
   const fetchUsers = async () => {
     setLoading(true);
     setError(null);
