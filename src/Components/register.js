@@ -82,7 +82,7 @@ const Register = (props) => {
     if (!formValid) return;
     if (isNewUser) {
       try {
-        await axios.post(`${process.env.REACT_APP_API_URL}/api/users/`, user).then(
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/users`, user).then(
           (res) => alert("User registered successfully!"))
           .catch((err) => {
             if (err.response.status === 400) {

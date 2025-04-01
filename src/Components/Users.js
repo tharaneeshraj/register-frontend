@@ -19,7 +19,7 @@ const ViewUsers = ({ setShowUsers }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${API_URL}/api/users/`);
+      const response = await axios.get(`${API_URL}/api/users`);
       setUsers(response.data);
       setShowUserList(true);
     } catch (error) {
