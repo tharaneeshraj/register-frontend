@@ -1,9 +1,8 @@
 
 import './App.css';
-import Register from './Components/register';
-import Users from './Components/Users'
+import Register from './Components/register'
+import ViewUsers from './Components/Users'
 import React ,{ useState } from 'react';
-
 
 function App() {
 
@@ -11,7 +10,7 @@ function App() {
   return (
     <div>
       {(showUsers)? null: <Register showUsers={showUsers}/>}
-      <Users setshowUsers={setshowUsers}/>
+      <ViewUsers setshowUsers={setshowUsers}/>
     </div>
   )
 }
