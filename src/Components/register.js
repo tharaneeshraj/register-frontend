@@ -1,7 +1,8 @@
 import axios from "axios";
 import moment from 'moment';
 import React, { useState } from "react";
-import "./Register.css";
+import "./register.css";
+
 
 const Register = (props) => {
   let userData = {
@@ -40,28 +41,25 @@ const Register = (props) => {
 
 
   const validateField = (name, value) => {
-    let error = "";
-
-    if (name === "name" && value.length < 5) error = "Enter a valid name";
-
+    let errorMsg = "";
+  
+    if (name === "name" && value.length < 5) errorMsg = "Enter a valid name";
     if (name === "age") {
-      if (!value) error = "Age is required";
-      else if (value < 0 || value > 100 || isNaN(value)) error = "Enter a valid age (0-100)";
+      if (!value) errorMsg = "Age is required";
+      else if (value < 0 || value > 100 || isNaN(value)) errorMsg = "Enter a valid age (0-100)";
     }
-
-    if (name === "dob" && !value) error = "Date of Birth is required";
-
+    if (name === "dob" && !value) errorMsg = "Date of Birth is required";
     if (name === "password" && !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)) {
-      error = "Enter valid password";
+      errorMsg = "Enter a valid password";
     }
-
     if (name === "cpswd") {
-      if (!value) error = "Password is required";
-      else if (value !== user.password) error = "Must match with password";
+      if (!value) errorMsg = "Password is required";
+      else if (value !== user.password) errorMsg = "Must match with password";
     }
-
-    
+  
+    setErrors((prev) => ({ ...prev, [name]: errorMsg }))
   }
+  
 
   const handleBlur = (e) => {
     validateField(e.target.name, e.target.value);

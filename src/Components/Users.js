@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Register from './Components/register';
+import Register from '../Components/register';
 import moment from 'moment';
 import "./Users.css";
 
