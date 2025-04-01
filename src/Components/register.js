@@ -3,7 +3,6 @@ import moment from 'moment';
 import React, { useState } from "react";
 import "./register.css";
 
-
 const Register = (props) => {
   let userData = {
     _id: undefined,
